@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { useLocation, useParams, Link, Outlet } from "react-router-dom";
-import { fetchMovieById } from "../../services/api";
+import { fetchMovieById } from "../../services/api.js";
 import Loader from "../../components/Loader/Loader.jsx"
-import s from "./MovieDetailPage.module.css"
+import s from "./MovieDetailsPage.module.css"
 
 
 
