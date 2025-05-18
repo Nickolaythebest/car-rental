@@ -1,0 +1,19 @@
+.dataContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 15px;
+    border: black 2px ;
+    border-radius: 10px;
+    padding-bottom: 5px;
+}
+.typing {
+    background-color: #fff;
+    color: black;
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+}

@@ -29,7 +29,6 @@ export default [
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
       "react/prop-types": 0,
-      "id-length": ["error", { "min": 3 }],
       'react/jsx-no-target-blank': 'off',
       'react-refresh/only-export-components': [
         'warn',

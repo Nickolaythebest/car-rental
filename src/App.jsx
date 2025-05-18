@@ -1,38 +1,28 @@
-
 import { Routes, Route } from "react-router-dom";
-import Navigation from './components/Navigation/Navigation.jsx';
-import HomePage from './pages/HomePage/HomePage.jsx';
-/*import MoviesPage from './pages/MoviesPage/MoviesPage.jsx';*/
-/*import MovieDetailPage from './pages/MovieDetailPage/MovieDetailPage.jsx';*/
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx';
-/*import MovieCast from './pages/MovieCast/MovieCast.jsx';*/
-/*import MovieReviews from './pages/MovieReviews/MovieReviews.jsx';*/
-import { lazy } from "react";
-import './App.css'
+import './App.css';
 
-/*const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));*/
-const MoviesPage = lazy(() => import('./pages/MoviesPage/MoviesPage.jsx'))
-const MovieDetailPage = lazy(() => import('./pages/MovieDetailsPage/MovieDetailsPage.jsx'))
-const MovieCast = lazy(() => import('./pages/MovieCast/MovieCast.jsx'))
-const MovieReviews = lazy(() => import('./pages/MovieReviews/MovieReviews.jsx'))
+import Loader from "./components/Loader/Loader.jsx";
+import { lazy, Suspense } from "react";
+import HomePage from './pages/HomePage/HomePage.jsx'
+import Layout from "./components/Layout.jsx";
+
+const CatalogPage = lazy(() => import('./pages/CatalogPage.jsx'));
+const CarPage = lazy(() => import('./pages/CarPage.jsx'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage.jsx'));
+
 function App() {
-  
   return (
-    <>
-    <Navigation />
-      <div>
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/movies' element={<MoviesPage />} />
-          <Route path='/movies/:movieId' element={<MovieDetailPage />}>
-            <Route path='/movies/:movieId/cast' element={<MovieCast />} />
-            <Route path='/movies/:movieId/reviews' element={<MovieReviews />} />
-          </Route>
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="catalog" element={<CatalogPage />} />
+          <Route path="catalog/:id" element={<CarPage />} />
           <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </div>
-    </>
-  )
+        </Route>
+      </Routes>
+    </Suspense>
+  );
 }
 
-export default App
+export default App;

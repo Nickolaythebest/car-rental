@@ -1,0 +1,13 @@
+.list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    padding: 24px;
+    list-style: none;
+  }
+  
+  .item {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  

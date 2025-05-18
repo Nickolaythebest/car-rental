@@ -1,0 +1,50 @@
+.hero {
+    width: 100%;
+    background-image: url('../../picture/picture.jpg'); /* Путь к фону */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    padding: 60px;
+  }
+  
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5); /* затемнение */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .content {
+    
+    color: #fff;
+    margin-top: 440px;
+  }
+  
+  .title {
+    
+    font-family: "Manrope", sans-serif;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+    margin-bottom: 16px;
+
+  }
+  
+  .subtitle {
+    font-family: "Manrope", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.33;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+    margin-bottom: 40px;
+  }
+  

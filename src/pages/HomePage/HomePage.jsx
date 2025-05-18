@@ -1,53 +1,42 @@
-import { useState, useEffect } from 'react';
-import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn.jsx';
-import Loader from '../../components/Loader/Loader.jsx';
-import MovieList from '../../components/MovieList/MovieList.jsx'
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage.jsx';
-import { fetchMovie } from '../../services/api.js';
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import styles from './HomePage.module.css';
+import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
-function MoviesPage() {
-    const [err, setError] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [movies, setMovies] = useState([]);
-    const [totalPage, setTotalPage] = useState(0);
-    const [page, setPage] = useState(1);
+function HomePage() {
+  return (
+    <section className={styles.hero}>
+      
+        <div className={styles.content}>
+          <h1 className={styles.title}>Find your perfect rental car</h1>
+          <p className={styles.subtitle}>Reliable and budget-friendly rentals for any journey</p>
+          <Button 
+            variant="contained"
+            color="primary"
+            size="large"
+            component={Link}
+            to="/catalog"
+            sx={{
+              fontFamily: '"Manrope" sans-serif',
+              borderRadius: '12px',
+              padding: '12px 50px',
+              width: '276px',
+              height: '44px',
+              fontWeight: 600,
+              fontSize: 16,
+              lineHeight: 1.25,
 
-    useEffect(() => {
-        const fetchMovieData = async () => {
-            try {
-                setError(false);
-                setLoading(true);
-                const {results, total_pages} = await fetchMovie(page)
-                setMovies(prev => [...prev, ...results]);
-                setTotalPage(total_pages)
-            }
-            catch (err){
-                setError(true);
-                toast.error('Произошла ошибка при загрузке данных!');
-            }
-            finally {
-                setLoading(false)
-            };}
-            fetchMovieData();
-        }, [page])
-
-        const handleChange = () => {
-            setPage(prev => prev + 1)
-        }
-    
-
-    
-    return(
-        <div>
-        <h1>Trending today</h1>
-        {loading && <Loader />}
-        {movies.length > 0 && <MovieList movies={movies} />}
-        {movies.length > 0 && page < totalPage && <LoadMoreBtn newPage={handleChange} />}
-        {err && <ErrorMessage />}
-        <ToastContainer />
+              backgroundColor: '#3470ff',
+              '&:hover': {
+                backgroundColor: '#0b44cd'
+              }
+            }}
+          >
+            View Catalog
+          </Button>
         </div>
-    )
+     
+    </section>
+  );
 }
-export default MoviesPage;
+
+export default HomePage;
